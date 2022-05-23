@@ -1,18 +1,19 @@
 <template>
-  <div class="Impressumseite">
-		<h1 class="text-center">Impressum</h1>
-		<p class="text-center mb-0 mt-0">Michael Herberg</p>
-    <p class="text-center mb-0 mt-0">Daniel Do</p>
-    <p class="text-center mb-0 mt-0">Duc Nguyen</p>
-    <a href="/">Back</a>
+  <div class="d-flex flex-column align-items-center mt-5">
+			<h1>To-Do bearbeiten {{this.id}}</h1>
+			<edit-to-do ref='todoList'></edit-to-do>
+			<a href="impressum.html">Impressum</a>
 		</div>
 </template>
 
 <script>
-
+import EditToDo from './../../components/EditToDo.vue'
 
 export default {
-  name: 'ImpressumPage'
+  name: 'EditToDoPage',
+  components: {
+    EditToDo
+  }
 }
 </script>
 
