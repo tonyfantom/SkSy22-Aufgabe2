@@ -26,7 +26,6 @@
 
 <script>
 import Server from "../Server.js"
-import axios from "axios";
 
 export default {
   name: 'ToDoList',
@@ -49,19 +48,13 @@ export default {
 		return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
 	},
 	deleteToDo(id) {
-		console.log(id)
-		console.log(typeof(id))
 		const data = JSON.stringify({"id": id});
 		var config = {
-			method: 'delete',
-			url: "http://localhost:1234/todos",
 			headers: { 'Content-Type': 'application/json'},
 			data : data
 		};
-		const res = axios(config)
-		console.log(res)
+		Server.deleteToDo(config);
 		this.getToDo();
-		//Server.deleteToDo(data);
 	},
 	async getToDo() {
 		try {
@@ -74,20 +67,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+@import'~bootstrap/dist/css/bootstrap.css'
 </style>

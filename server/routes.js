@@ -1,7 +1,10 @@
 const express = require("express");
-const { ObjectId } = require("mongodb");
+const mongodb = require("mongodb");
 const routes = express.Router();
 const db = require("./connect");
+const cors = require('cors');
+
+routes.use(cors());
 
 routes.route("/todos").get((_req, res) => {
 	const connection = db.getDb();
@@ -37,7 +40,7 @@ routes.route("/todos").post(async (req, res) => {
 
 routes.route("/todos").put(async (req, res) => {
 	const connection = db.getDb();
-	const filter = { _id: new ObjectId(req.body.id) };
+	const filter = { _id: new mongodb.ObjectId(req.body.id) };
 	const update = {
 		$set: {
 			title: req.body.title,
@@ -57,7 +60,7 @@ routes.route("/todos").put(async (req, res) => {
 
 routes.route("/todos").delete(async (req, res) => {
 	const connection = db.getDb();
-	const filter = { _id: new ObjectId(req.body.id) };
+	const filter = { _id: new mongodb.ObjectId(req.body.id) };
 
 	try {
 		await connection.collection("todos").deleteOne(filter);
