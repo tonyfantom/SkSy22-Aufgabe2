@@ -11,3 +11,11 @@ Als Web-Server wird [Express.js](https://expressjs.com/) verwendet. Zum Starten 
 npm i
 node index.js
 ```
+
+### Frontend
+
+Zum Starten des Servers einfach in `client` navigieren und folgende Befehle im Terminal eingeben:
+```console
+npm i
+npm run serve
+```
